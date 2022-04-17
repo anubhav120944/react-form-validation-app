@@ -1,0 +1,15 @@
+.multi-select-box{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+}
+
+label{
+    font-size: 17px;
+    color: rgb(77, 1, 77);
+}
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+}

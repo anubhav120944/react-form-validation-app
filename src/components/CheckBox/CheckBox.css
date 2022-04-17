@@ -1,0 +1,45 @@
+.check-skills{
+    /* padding-top: 10px; */
+}
+
+.check-box{
+    display: flex;
+    flex-direction: row;
+}
+.check-wrap{
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+input{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+input:focus,input:active{
+    outline: none;
+    border: 2px solid purple;
+}
+
+
+
+label{
+    font-size: 17px;
+    color: rgb(77, 1, 77);
+}
+
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 15px;
+}
+
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+}
+
