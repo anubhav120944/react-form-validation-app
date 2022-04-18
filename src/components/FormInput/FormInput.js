@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FormInput.css";
+import "../MainForm.css";
 const FormInput = (props) => {
   const [error, setError] = useState(false);
   const { label, errorMessage, onChange, pattern, id, ...inputProps } = props;
@@ -13,10 +13,10 @@ const FormInput = (props) => {
   };
 
   return (
-    <div className="formInput">
-      <label>{label}*</label>
+    <div className="input-box">
+      <span className="details">{label}*</span>
       <input {...inputProps} onChange={onChange} onBlur={handleFocus} />
-      {error && <span>{errorMessage}</span>}
+      {error && <span className="error-display" style={{color: "red"}}>{errorMessage}</span>}
     </div>
   );
 };

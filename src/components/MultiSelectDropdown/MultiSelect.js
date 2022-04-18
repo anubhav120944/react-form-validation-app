@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import "./MultiSelect.css";
+import "../MainForm.css";
 
 function MultiSelect(props) {
   const { handleChange, hobbies, error } = props;
@@ -43,16 +43,17 @@ function MultiSelect(props) {
   ];
 
   return (
-    <div className="multi-select-box">
-      <label>Hobbies*</label>
+    <div className="input-box">
+      <span className="details">Hobbies*</span>
       <Select
+        className="muti-select"
         isMulti
         name="hobbies"
         value={hobbies}
         options={Hobbies}
         onChange={handleChange}
       ></Select>
-      {error && <span>{error}</span>}
+      {error && <span className="error-display" style={{color: "red"}}>{error}</span>}
     </div>
   );
 }

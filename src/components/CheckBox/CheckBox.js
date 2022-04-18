@@ -1,5 +1,5 @@
 import React from "react";
-import "./CheckBox.css";
+import "../MainForm.css";
 
 const options = [
   "ReactJs",
@@ -16,8 +16,8 @@ function CheckBox(props) {
   const { handleChange, skills, error } = props;
 
   return (
-    <div className="check-skills">
-      <label className="check-box">Skills*</label>
+    <div className="input-box">
+      <span className="details">Skills*</span>
       <div className="check-wrap">
         {options.map((data) => {
           return (
@@ -33,7 +33,7 @@ function CheckBox(props) {
           );
         })}
       </div>
-      {error && <span>{error}</span>}
+      {error && <span className="error-display" style={{color: "red"}}>{error}</span>}
     </div>
   );
 }

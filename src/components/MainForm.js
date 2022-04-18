@@ -18,6 +18,7 @@ function MainForm() {
     username: "",
     gender: "",
     profession: "",
+    subProfession: "",
   });
 
   const initialErrorState = {
@@ -31,6 +32,7 @@ function MainForm() {
   const [stateSkills, setStateSkills] = useState([]);
   const [hobbies, setHobbies] = useState([]);
   const [inputsError, setInputsError] = useState(initialErrorState);
+ 
 
   const inputs = [
     {
@@ -68,7 +70,7 @@ function MainForm() {
     {
       id: 4,
       name: "phone",
-      type: "text",
+      type: "number",
       placeholder: "Enter your Phone no.",
       errorMessage: "It should be a valid 10 digit number",
       label: "Phone no.",
@@ -106,7 +108,7 @@ function MainForm() {
       stateSkills,
       hobbies,
     });
-
+    console.log(values.profession.length)
     if (isInvalid) {
       setInputsError((prevInputsError) => {
         return {
@@ -117,7 +119,7 @@ function MainForm() {
 
       return;
     }
-    
+
     console.log({ ...values, stateSkills, hobbies });
     alert("Your Form is Submitted Successfully...!!");
     setInputsError(initialErrorState);
@@ -130,6 +132,7 @@ function MainForm() {
       username: "",
       gender: "",
       profession: "",
+      subProfession: "",
     });
     setHobbies([]);
     setStateSkills([]);
@@ -156,6 +159,8 @@ function MainForm() {
     setHobbies([...value]);
   };
 
+
+
   const buttonDisabled =
     values.name &&
     values.email &&
@@ -165,23 +170,24 @@ function MainForm() {
     values.confirmPassword;
 
   return (
-    <div className="app">
-      <div className="wrapper">
-        <h1>Profile Form</h1>
-        <form className="vertical-scroll" onSubmit={handleSubmit}>
-          <p style={{ color: "red", fontSize: "12px" }}>
-            * All fields are required!
-          </p>
-          <br />
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              {...input}
-              value={values[input.name]}
-              onChange={onChange}
-            />
-          ))}
-
+    <div className="container">
+      <div className="title">PROFILE FORM</div>
+      <div className="content">
+        <form onSubmit={handleSubmit}>
+          <div className="user-details">
+            {/* <p style={{ color: "red", fontSize: "12px" }}>
+              * All fields are required!
+            </p>
+            <br /> */}
+            {inputs.map((input) => (
+              <FormInput
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+          </div>
           <Radio
             error={inputsError.radioError}
             gender={values.gender}
@@ -191,6 +197,7 @@ function MainForm() {
           <SingleSelect
             error={inputsError.singleSelectError}
             profession={values.profession}
+            subProfession={values.subProfession}
             onChange={onChange}
           />
 
@@ -205,9 +212,12 @@ function MainForm() {
             skills={stateSkills}
             handleChange={handleSkillsChange}
           />
-          <button className="btn" disabled={!buttonDisabled}>
+          {/* <button className="button" disabled={!buttonDisabled}>
             Submit
-          </button>
+          </button> */}
+          <div className="button">
+            <input type="submit" disabled={!buttonDisabled} value="Submit" />
+          </div>
         </form>
       </div>
     </div>
