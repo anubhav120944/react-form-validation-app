@@ -24,6 +24,7 @@ function MainForm() {
   const initialErrorState = {
     radioError: "",
     singleSelectError: "",
+    subSingleSelectError: "",
     multiSelectError: "",
     checkboxError: "",
     confirmPasswordError: "",
@@ -53,7 +54,7 @@ function MainForm() {
       placeholder: "Enter your Name",
       errorMessage: "Name must be of atleast 3 characters!",
       label: "Name",
-      pattern: /^[A-Za-z]{3,36}$/,
+      pattern: /^[A-Za-z\s]{3,36}$/,
     },
 
     {
@@ -108,7 +109,7 @@ function MainForm() {
       stateSkills,
       hobbies,
     });
-    console.log(values.profession.length)
+    // console.log(values.profession.length)
     if (isInvalid) {
       setInputsError((prevInputsError) => {
         return {
@@ -165,9 +166,9 @@ function MainForm() {
     values.name &&
     values.email &&
     values.phone &&
-    values.username &&
-    values.password &&
-    values.confirmPassword;
+    values.username 
+    // values.password &&
+    // values.confirmPassword;
 
   return (
     <div className="container">
@@ -195,10 +196,12 @@ function MainForm() {
           />
 
           <SingleSelect
+            errors={inputsError.subSingleSelectError}
             error={inputsError.singleSelectError}
             profession={values.profession}
             subProfession={values.subProfession}
             onChange={onChange}
+            setValues={setValues}
           />
 
           <MultiSelect

@@ -1,12 +1,13 @@
 export const validations = (formFields) => {
   let radioError = "";
   let singleSelectError = "";
+  let subSingleSelectError ="";
   let multiSelectError = "";
   let checkboxError = "";
   let confirmPasswordError = "";
   let isInvalid = false;
 
-  const { gender, profession, stateSkills, hobbies,password,confirmPassword } = formFields;
+  const { gender, profession, subProfession, stateSkills, hobbies,password,confirmPassword } = formFields;
 
   if (gender.length === 0) {
     radioError = "Gender must be selected.";
@@ -20,6 +21,15 @@ export const validations = (formFields) => {
     checkboxError = "Choose one or more skills.";
   }
 
+  if((profession !== "HR") && subProfession.length === 0)
+  {
+    subSingleSelectError = "Choose any of the subprofession!"
+  }
+  if(profession === "HR")
+  {
+    subSingleSelectError = ""
+  }
+
   if (hobbies.length === 0) {
     multiSelectError = "Choose one or more hobbies.";
   }
@@ -29,7 +39,7 @@ export const validations = (formFields) => {
      confirmPasswordError = "Passwords do not match!";
   }
 
-  if (radioError || singleSelectError || multiSelectError || checkboxError || confirmPasswordError) {
+  if (radioError || singleSelectError || multiSelectError || checkboxError || confirmPasswordError || subSingleSelectError) {
     isInvalid = true;
   }
 
@@ -37,6 +47,7 @@ export const validations = (formFields) => {
     isInvalid,
     radioError,
     singleSelectError,
+    subSingleSelectError,
     multiSelectError,
     checkboxError,
     confirmPasswordError
