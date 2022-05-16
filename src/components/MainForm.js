@@ -33,7 +33,6 @@ function MainForm() {
   const [stateSkills, setStateSkills] = useState([]);
   const [hobbies, setHobbies] = useState([]);
   const [inputsError, setInputsError] = useState(initialErrorState);
- 
 
   const inputs = [
     {
@@ -137,6 +136,8 @@ function MainForm() {
     });
     setHobbies([]);
     setStateSkills([]);
+    document.querySelectorAll('input[type=checkbox]').forEach( el => el.checked = false );
+    // setChecked(false)
   };
 
   const onChange = (e) => {
@@ -166,9 +167,9 @@ function MainForm() {
     values.name &&
     values.email &&
     values.phone &&
-    values.username 
-    // values.password &&
-    // values.confirmPassword;
+    values.username &&
+    values.password &&
+    values.confirmPassword;
 
   return (
     <div className="container">
